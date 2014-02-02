@@ -11,6 +11,7 @@ class Kf5umbrella < Formula
 
   depends_on "cmake" => :build
   depends_on "extra-cmake-modules" => :build
+  depends_on "qt5" => :build
 
   def install
     args = std_cmake_args
