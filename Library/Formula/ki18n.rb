@@ -12,10 +12,14 @@ class Ki18n < Formula
   depends_on "cmake" => :build
   depends_on "extra-cmake-modules" => :build
   depends_on "qt5" => :build
+  depends_on "kjs" => :build
+  depends_on "gettext" => :build
 
   def install
     args = std_cmake_args
     args << "-DCMAKE_PREFIX_PATH=\"#{Formula.factory('qt5').opt_prefix};#{Formula.factory('extra-cmake-modules').opt_prefix}\""
+    args << "-DCMAKE_SHARED_LINKER_FLAGS=-lintl" # cmake thinks libintl is part of libc
+    args << "-DCMAKE_EXE_LINKER_FLAGS=-lintl"
 
     system "cmake", ".", *args
     system "make", "install"
