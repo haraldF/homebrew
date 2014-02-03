@@ -16,6 +16,7 @@ class Ktexteditor < Formula
   depends_on "kjs" => :build
   depends_on "ki18n" => :build
   depends_on "kconfig" => :build
+  depends_on "kguiaddons" => :build
 
   def install
     args = std_cmake_args
