@@ -13,6 +13,7 @@ class Kio < Formula
   depends_on "kdbusaddons"
   depends_on "kitemviews"
   depends_on "kservice"
+  depends_on "kconfigwidgets"
 
   def install
     args = std_cmake_args

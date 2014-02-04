@@ -21,6 +21,9 @@ class Kauth < Formula
 
     system "cmake", ".", *args
     system "make", "install"
+
+    mkdir_p "#{HOMEBREW_PREFIX}/lib/kde5/libexec"
+    ln_s "#{lib}/kde5/libexec/kauth-policy-gen.app", "#{HOMEBREW_PREFIX}/lib/kde5/libexec/"
   end
 end
 
