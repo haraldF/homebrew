@@ -5,14 +5,12 @@ class Kjs < Formula
   url "http://download.kde.org/unstable/frameworks/4.95.0/kjs-4.95.0.tar.xz"
   sha1 "6e34a43606295cfcf90a5c87748db97161940c6e"
 
-  keg_only "Only required for building KDE applications"
-
   head 'git://anongit.kde.org/kjs.git'
 
   depends_on "cmake" => :build
   depends_on "extra-cmake-modules" => :build
-  depends_on "qt5" => :build
-  depends_on "pcre" => :build
+  depends_on "qt5"
+  depends_on "pcre"
 
   def patches
     DATA

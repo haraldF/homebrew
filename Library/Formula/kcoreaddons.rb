@@ -5,13 +5,11 @@ class Kcoreaddons < Formula
   url "http://download.kde.org/unstable/frameworks/4.95.0/kcoreaddons-4.95.0.tar.xz"
   sha1 "5fc12b08e4d1707a68548ac4f002647f7bf7bceb"
 
-  keg_only "Only required for building KDE applications"
-
   head 'git://anongit.kde.org/kcoreaddons.git'
 
   depends_on "cmake" => :build
   depends_on "extra-cmake-modules" => :build
-  depends_on "qt5" => :build
+  depends_on "qt5"
   depends_on "shared-mime-info"
 
   def patches

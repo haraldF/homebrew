@@ -5,15 +5,13 @@ class Ki18n < Formula
   url "http://download.kde.org/unstable/frameworks/4.95.0/ki18n-4.95.0.tar.xz"
   sha1 "5b6423af0bf96c07cc298ec560616fee4c625f8e"
 
-  keg_only "Only required for building KDE applications"
-
   head 'git://anongit.kde.org/ki18n.git'
 
   depends_on "cmake" => :build
   depends_on "extra-cmake-modules" => :build
-  depends_on "qt5" => :build
-  depends_on "kjs" => :build
   depends_on "gettext" => :build
+  depends_on "qt5"
+  depends_on "kjs"
 
   def install
     args = std_cmake_args

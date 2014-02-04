@@ -5,18 +5,17 @@ class Ktexteditor < Formula
   url "http://download.kde.org/unstable/frameworks/4.95.0/ktexteditor-4.95.0.tar.xz"
   sha1 ""
 
-  keg_only "Only required for building KDE applications"
-
   head 'git://anongit.kde.org/ktexteditor.git'
 
   depends_on "cmake" => :build
   depends_on "extra-cmake-modules" => :build
-  depends_on "qt5" => :build
-  depends_on "karchive" => :build
-  depends_on "kjs" => :build
-  depends_on "ki18n" => :build
-  depends_on "kconfig" => :build
-  depends_on "kguiaddons" => :build
+  depends_on "qt5"
+  depends_on "karchive"
+  depends_on "kjs"
+  depends_on "ki18n"
+  depends_on "kconfig"
+  depends_on "kguiaddons"
+  depends_on "kjobwidgets"
 
   def install
     args = std_cmake_args
