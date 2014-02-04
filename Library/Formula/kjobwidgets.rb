@@ -9,6 +9,7 @@ class Kjobwidgets < Formula
 
   head 'git://anongit.kde.org/kjobwidgets.git'
 
+  depends_on "kcoreaddons" => :build
   depends_on "cmake" => :build
   depends_on "extra-cmake-modules" => :build
   depends_on "qt5" => :build
