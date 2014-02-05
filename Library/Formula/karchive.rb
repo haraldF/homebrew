@@ -11,49 +11,12 @@ class Karchive < Formula
   depends_on "extra-cmake-modules" => :build
   depends_on "qt5"
 
-  def patches
-    DATA
-  end
-
   def install
     args = std_cmake_args
     args << "-DCMAKE_PREFIX_PATH=\"#{Formula.factory('qt5').opt_prefix};#{Formula.factory('extra-cmake-modules').opt_prefix}\""
+    args << "-DCMAKE_CXX_FLAGS='-D_DARWIN_C_SOURCE'"
 
     system "cmake", ".", *args
     system "make", "install"
   end
 end
-
-__END__
-diff --git a/autotests/karchivetest.cpp b/autotests/karchivetest.cpp
-index 6d6b584..5adda2f 100644
---- a/autotests/karchivetest.cpp
-+++ b/autotests/karchivetest.cpp
-@@ -32,6 +32,13 @@
- #include <unistd.h> // symlink
- #include <errno.h>
- #endif
-+#ifdef Q_OS_MAC
-+extern "C"
-+{
-+    ssize_t readlink(const char *path, char *buf, size_t bufsize);
-+    int symlink(const char *path1, const char *path2);
-+}
-+#endif
- 
- #ifdef Q_OS_WIN
- #include <Windows.h>
-diff --git a/src/karchive.cpp b/src/karchive.cpp
-index a25b85e..8d054d2 100644
---- a/src/karchive.cpp
-+++ b/src/karchive.cpp
-@@ -48,6 +48,9 @@
- #ifdef Q_OS_WIN
- #include <Windows.h> // DWORD, GetUserNameW
- #endif // Q_OS_WIN
-+#ifdef Q_OS_MACX
-+extern "C" { ssize_t readlink(const char *path, char *buf, size_t bufsize); }
-+#endif
- 
- ////////////////////////////////////////////////////////////////////////
- /////////////////////////// KArchive ///////////////////////////////////
